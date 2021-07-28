@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace De4DotGUI
@@ -14,10 +15,17 @@ namespace De4DotGUI
 		[STAThread]
 		private static void Main(string[] args)
 		{
-			Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
-		}
+            if (args.Length == 1)
+            {
+                Application.Run(new MainForm(args[0]));
+            }
+            else
+            {
+                Application.Run(new MainForm());
+            }
+        }
 		
 	}
 }
